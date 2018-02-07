@@ -1,0 +1,23 @@
+<div [ngClass]="classList" (mouseover)="mouserOver()" [ngStyle]="{width: size, height: size}">
+  <div [ngSwitch]="treasureNum">
+    <img *ngSwitchCase="1" class="img-fluid" src="../../../assets/gold/gold_1.png"
+         alt="treasure">
+    <img *ngSwitchCase="2" class="img-fluid" src="../../../assets/gold/gold_2.png"
+         alt="treasure">
+    <img *ngSwitchCase="3" class="img-fluid" src="../../../assets/gold/gold_3.png"
+         alt="treasure">
+    <img *ngSwitchCase="4" class="img-fluid" src="../../../assets/gold/gold_4.png"
+         alt="treasure">
+    <img *ngSwitchCase="5" class="img-fluid" src="../../../assets/gold/gold_5.png"
+         alt="treasure">
+  </div>
+  <img *ngIf="showAvatar" class="img-fluid" src="../../../assets/players/avatars.png" alt="fence">
+  <img *ngIf="showElve" class="img-fluid" src="../../../assets/players/elves.png" alt="fence">
+  <img *ngIf="showGiant" class="img-fluid" src="../../../assets/players/giants.png" alt="fence">
+  <img *ngIf="showWizard" class="img-fluid" src="../../../assets/players/wizards.png" alt="fence">
+  <div *ngIf="gameOver" class="number-div">
+    <p>{{armyAmount===0?'':armyAmount}}</p>
+  </div>
+  <div *ngIf="clickable" (click)="onClick()" class="overlay overlay-ground"></div>
+  <div *ngIf="!clickable" class="overlay overlay-error"></div>
+</div>

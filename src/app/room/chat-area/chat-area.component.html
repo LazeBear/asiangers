@@ -1,0 +1,11 @@
+<div class="chat-output">
+  <div id="chat-window" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <div id="output">
+      <p *ngFor="let msg of msgHistory">
+        <strong>{{msg.player}}: </strong>{{msg.message}}
+      </p>
+    </div>
+  </div>
+  <input [(ngModel)]="message" type="text" placeholder="Message" (keyup.enter)="sendMsg()"/>
+  <button (click)="sendMsg()">Send</button>
+</div>

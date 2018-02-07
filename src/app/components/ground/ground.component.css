@@ -1,0 +1,18 @@
+.number-div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.number-div p {
+  font-size: 50px;
+  color: white;
+}
+
+.player-img {
+  height: 100px !important;
+  width: 100px !important;
+}

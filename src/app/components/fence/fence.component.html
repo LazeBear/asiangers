@@ -1,0 +1,11 @@
+<div class="fence" [ngStyle]="{width: fenceWidth, height: fenceHeight}"
+     (click)="onClick()">
+  <img *ngIf="showHrzFence" class="img-fluid" src="../../../assets/tiles/fence-h.png" alt="fence">
+  <img *ngIf="showVrtFence" class="img-fluid" src="../../../assets/tiles/fence-v.png" alt="fence"
+       [ngStyle]="{maxHeight: fenceHeight}">
+  <div *ngIf="clickable" class="overlay overlay-fence"></div>
+  <div *ngIf="!clickable" class="overlay overlay-error"></div>
+  <div *ngIf="captured" class="captured"></div>
+</div>
+<!--{minWidth: fenceSize,minHeight: fenceSize,-->
+<!--height: '100%', width: '100%'}-->

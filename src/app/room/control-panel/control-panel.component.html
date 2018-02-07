@@ -1,0 +1,38 @@
+<div class="control-panel" style="width:950px;">
+  <div class="row">
+    <div class="col-2">
+      <div class="row">
+        <div [ngSwitch]="gameData.id">
+          <img *ngSwitchCase="1" class="player-img" src="../../../assets/players/elves.png"
+               alt="treasure">
+          <img *ngSwitchCase="2" class="player-img" src="../../../assets/players/avatars.png"
+               alt="treasure">
+          <img *ngSwitchCase="3" class="player-img" src="../../../assets/players/giants.png"
+               alt="treasure">
+          <img *ngSwitchCase="4" class="player-img" src="../../../assets/players/wizards.png"
+               alt="treasure">
+        </div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <button type="button" style="margin: 0 auto;" class="btn btn-success" (click)="startGame()">Start Game</button>
+        <button type="button" style="margin: 0 auto;" class="btn btn-danger" (click)="finishGame()">Finish Game</button>
+      </div>
+      <h5 style="color: #fff;" class="text-center">Please select the level of character you'd like to place</h5>
+      <div class="row" style="margin-right: 50px">
+        <div *ngFor="let i of [0,1,2,3,4]" style="margin: 0 auto">
+          <button type="button" class="btn btn-primary"
+                  (click)="chooseArmy(i+1)">
+            {{i+1}}
+          </button>
+          <span style="color: white">x{{gameData[i+1]}}</span>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="endTurn()">End Turn</button>
+      </div>
+      <div class="row" style="color: white">
+        <p>Current player: {{gameData.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>

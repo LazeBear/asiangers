@@ -1,0 +1,10 @@
+.reg-link {
+  float: right;
+  color: #575ed8;
+  margin-top: 10px;
+  font-size: 0.8em;
+}
+
+.reg-link a {
+  text-decoration: none;
+}

@@ -1,0 +1,10 @@
+<div class="game-board">
+  <div *ngFor="let j of height" style="display: flex">
+    <div *ngFor="let i of width" style="display: flex">
+      <app-ground *ngIf="i % 2 === 0 && j % 2 ===0" [x]="i" [y]="j"></app-ground>
+      <app-fence [x]="i" [y]="j" *ngIf="i % 2 !== 0 && j % 2 !== 0" [type]=0></app-fence>
+      <app-fence [x]="i" [y]="j" *ngIf="i % 2 !== 0 && j % 2 === 0" [type]=1></app-fence>
+      <app-fence [x]="i" [y]="j" *ngIf="i % 2 === 0 && j % 2 !== 0" [type]=2></app-fence>
+    </div>
+  </div>
+</div>
