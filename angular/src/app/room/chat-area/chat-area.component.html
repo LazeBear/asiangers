@@ -1,11 +1,37 @@
-<div class="chat-output">
-  <div id="chat-window" #scrollMe [scrollTop]="scrollMe.scrollHeight">
-    <div id="output">
+<div class="chat-area">
+  <div class="list-div">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a [ngClass]="showPlayerList?'nav-link active':'nav-link'" style="cursor: pointer;"
+           (click)="showPlayerList = true; showGamerList = false">Players</a>
+      </li>
+      <li class="nav-item">
+        <a [ngClass]="showGamerList?'nav-link active':'nav-link'" style="cursor: pointer;"
+           (click)="showPlayerList = false; showGamerList = true">Gamers</a>
+      </li>
+    </ul>
+    <div class="player-list" *ngIf="showPlayerList" style="overflow-y: auto; height: 140px">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let g of playerList">
+          {{g}}
+        </li>
+      </ul>
+    </div>
+    <div class="gamer-list" *ngIf="showGamerList">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let g of gamerList">
+          Character-{{g.character}}: {{g.player}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="chat-window">
+    <div id="output" #scrollMe [scrollTop]="scrollMe.scrollHeight">
       <p *ngFor="let msg of msgHistory">
         <strong>{{msg.player}}: </strong>{{msg.message}}
       </p>
     </div>
+    <input class="form-control" [(ngModel)]="message" type="text" placeholder="Message" (keyup.enter)="sendMsg()"/>
+    <button class="btn btn-primary btn-block" (click)="sendMsg()">Send</button>
   </div>
-  <input [(ngModel)]="message" type="text" placeholder="Message" (keyup.enter)="sendMsg()"/>
-  <button (click)="sendMsg()">Send</button>
 </div>

@@ -1,3 +1,8 @@
 .button-disabled button {
   cursor: not-allowed;
 }
+
+.player-img {
+  height: 100px;
+  width: 100px;
+}

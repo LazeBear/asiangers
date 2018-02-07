@@ -172,4 +172,28 @@ export class WebsocketService {
       });
     });
   }
+
+  onSystemMsg() {
+    return Observable.create(observer => {
+      this.socket.on('systemMsg', (msg) => {
+        observer.next(msg);
+      });
+    });
+  }
+
+  onGamerList() {
+    return Observable.create(observer => {
+      this.socket.on('gamerList', (gamerList) => {
+        observer.next(gamerList);
+      });
+    });
+  }
+
+  onPlayerList() {
+    return Observable.create(observer => {
+      this.socket.on('playerList', (playerList) => {
+        observer.next(playerList);
+      });
+    });
+  }
 }
