@@ -43,7 +43,7 @@ export class GameServiceService {
     this.weService.onFightOn().subscribe(player => {
       this.competitor = true;
       // this.playerNumber = player.number;
-      this.personalData = environment.playerData[player.size];
+      this.personalData = {...environment.playerData[player.size]};
       this.personalData['id'] = player.number;
       this.armyLeft.next(this.personalData);
       // console.log(this.playerNumber, this.personalData);
@@ -118,7 +118,7 @@ export class GameServiceService {
     if (!this.generalCheck(pos)) {
       return;
     }
-    if (this.lastMove != null && this.lastMove.checkMove(pos)) {
+    if (this.lastMove != null && this.lastMove.checkMove(pos, type)) {
       // console.log('this is not allowed');
       this.errorMsg.next('This is not allowed');
       return;

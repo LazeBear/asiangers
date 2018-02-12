@@ -20,7 +20,7 @@ export class ControlPanelComponent implements OnInit {
   ngOnInit() {
     this.gameDataSubscription = this.gameService.armyLeft.subscribe((data) => {
       this.gameData = data;
-      // console.log('update', this.gameData);
+      console.log('update', this.gameData);
     });
   }
 

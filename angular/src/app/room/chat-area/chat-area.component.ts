@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WebsocketService} from '../../services/websocket.service';
 import {GameServiceService} from '../../services/game-service.service';
 import {Subscription} from 'rxjs/Subscription';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-chat-area',
@@ -16,24 +17,28 @@ export class ChatAreaComponent implements OnInit, OnDestroy {
   showGamerList = false;
   gamerList = [];
   playerList = [];
+  playerName = '';
 
   systemMsg: Subscription;
   private gamerCharater = ['Elves', 'Avatars', 'Giants', 'Wizards'];
   private active: boolean = true;
 
-  constructor(private chatService: WebsocketService, private gameService: GameServiceService) {
+  constructor(private chatService: WebsocketService,
+              private gameService: GameServiceService,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.playerName = this.authService.currentUserDisplayName;
     this.chatService.onNewMessage()
       .takeWhile(() => this.active).subscribe(data => {
       this.msgHistory.push(data);
-      // this.chatArea.scrollTop = this.chatArea.scrollHeight;
+      console.log(data);
     });
 
     this.chatService.onSystemMsg()
       .takeWhile(() => this.active).subscribe(msg => {
-      this.msgHistory.push({player: 'System', message: msg});
+      this.msgHistory.push({player: 'SySteMM', message: msg});
     });
 
     this.chatService.onGamerList()
@@ -50,7 +55,7 @@ export class ChatAreaComponent implements OnInit, OnDestroy {
 
     this.systemMsg = this.gameService.systemMsg
       .subscribe(data => {
-        this.msgHistory.push({player: 'System', message: data});
+        this.msgHistory.push({player: 'SySteMM', message: data});
       });
   }
 
@@ -60,6 +65,7 @@ export class ChatAreaComponent implements OnInit, OnDestroy {
   }
 
   sendMsg() {
+    if (this.message === '') return;
     this.chatService.sendMessage(this.message);
     this.message = '';
   }

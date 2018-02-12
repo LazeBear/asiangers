@@ -16,7 +16,7 @@
     </div>
     <div class="col-10">
       <div class="row">
-        <button type="button" style="margin: 0 auto;" class="btn btn-success" (click)="startGame()">Start Game</button>
+        <button type="button" style="margin: 0 auto;" class="btn btn-success" (click)="startGame()">Join Game</button>
         <button type="button" style="margin: 0 auto;" class="btn btn-danger" (click)="finishGame()">Finish Game</button>
       </div>
       <h5 style="color: #fff;" class="text-center">Please select the level of character you'd like to place</h5>
@@ -30,7 +30,7 @@
         </div>
         <button type="button" class="btn btn-secondary" (click)="endTurn()">End Turn</button>
       </div>
-      <div class="row" style="color: white">
+      <div class="row" style="color: white; display: flex; align-items: center; justify-content: center;">
         <p>Current player: {{gameData.name}}</p>
       </div>
     </div>

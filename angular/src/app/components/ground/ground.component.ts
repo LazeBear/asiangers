@@ -91,11 +91,7 @@ export class GroundComponent implements OnInit, OnDestroy {
           this.showTreasure = false;
           this.treasureNum = 0;
           this.classList = 'ground';
-          // this.t1 = false;
-          // this.t2 = false;
-          // this.t3 = false;
-          // this.t4 = false;
-          // this.t5 = false;
+          this.armyAmount = 0;
           this.gameOver = false;
         }
       }

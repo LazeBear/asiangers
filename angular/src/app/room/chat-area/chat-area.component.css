@@ -29,16 +29,33 @@ h2 {
   border-radius: 2px;
 }
 
-#output p {
-  padding: 14px 0px;
-  margin: 0 5px;
-  border-bottom: 1px solid #e9e9e9;
-  color: #555;
+.system-msg {
+  background-color: crimson;
+  color: white;
 }
 
-#output strong {
+.my-msg strong {
+  color: dodgerblue;
+}
+
+.normal-msg strong {
   color: #575ed8;
 }
+
+.list-group-item {
+  padding: 0 0.75rem;
+}
+
+/*#output p {*/
+/*padding: 14px 0px;*/
+/*margin: 0 5px;*/
+/*border-bottom: 1px solid #e9e9e9;*/
+/*color: #555;*/
+/*}*/
+
+/*#output strong {*/
+/*color: #575ed8;*/
+/*}*/
 
 #output {
   height: 550px;

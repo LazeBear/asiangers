@@ -7,7 +7,8 @@ export const environment = {
       '100px',
     fenceSize:
       '40px',
-    ws_url: 'http://10.0.0.1:4199',
+    ws_url: 'https://asiangers.herokuapp.com:443',
+    // ws_url: 'http://10.0.0.1:4199',
     // ws_url: 'http://110.151.179.103:4199',
     firebase: {
       apiKey: "AIzaSyDMM_FUQ5A8IaCJtGrVY0pkYShGpuUy9oA",

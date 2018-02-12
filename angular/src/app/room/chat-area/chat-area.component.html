@@ -27,9 +27,16 @@
   </div>
   <div id="chat-window">
     <div id="output" #scrollMe [scrollTop]="scrollMe.scrollHeight">
-      <p *ngFor="let msg of msgHistory">
-        <strong>{{msg.player}}: </strong>{{msg.message}}
-      </p>
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let msg of msgHistory" class="list-group-item">
+          <p *ngIf="msg.player === 'SySteMM'" class="system-msg">
+            <strong>**GM**: </strong>{{msg.message}}
+          </p>
+          <p *ngIf="msg.player !== 'SySteMM'" [ngClass]="msg.player === playerName? 'my-msg': 'normal-msg'">
+            <strong>{{msg.player}}: </strong>{{msg.message}}
+          </p>
+        </li>
+      </ul>
     </div>
     <input class="form-control" [(ngModel)]="message" type="text" placeholder="Message" (keyup.enter)="sendMsg()"/>
     <button class="btn btn-primary btn-block" (click)="sendMsg()">Send</button>
