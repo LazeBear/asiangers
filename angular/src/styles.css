@@ -1,195 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~ng2-toastr/bundles/ng2-toastr.min.css";
+/*
+<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
-* {
-  box-sizing: border-box;
-}
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+*/
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
 
-body, html {
-  font-size: 18px;
-  height: 100%;
-}
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
 
-.btn-primary {
-  background-color: #575ed8;
-  border-color: #575ed8;
-}
+ORDER: Base + typography > general layout + grid > page layout > components
 
-.bg {
+1em = 16px
+*/
+@import url(~@angular/material/prebuilt-themes/indigo-pink.css);
+@import url(~bootstrap/dist/css/bootstrap.min.css);
+@import url(~ng2-toastr/bundles/ng2-toastr.min.css);
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-  /* Full height */
-  min-height: 100%;
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-  /* Center and scale the image nicely */
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.7)
-  ), url("assets/bg.jpg");
-  /* Set background image to fixed (don't scroll along with the page) */
-  background-attachment: fixed;
-  /* Center the background image */
-  background-position: center;
-  /* Set the background image to no repeat */
-  background-repeat: no-repeat;
-  /* Scale the background image to be as large as possible */
-  background-size: cover;
-}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-.game-board {
-  background: url('./assets/tiles/ground.png') repeat center;
-  margin-top: 10px;
-  border: 5px solid #575ed8;
-}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
 
-.treasure {
-  background-size: contain;
-  background: url('./assets/tiles/treasure.png') no-repeat;
-}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box; }
 
-.ground, .fence {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.ground {
-  border: 5px dotted dodgerblue;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-}
-
-.overlay-ground {
-  background-color: greenyellow;
-}
-
-.overlay-fence {
-  background-color: grey;
-}
-
-.overlay-error {
-  background-color: red;
-}
-
-.ground:hover .overlay, .fence:hover .overlay {
-  opacity: 0.8;
-}
-
-.showFence {
-  background-color: grey;
-}
-
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-app-game-board {
-  display: -webkit-box;
-}
-
-/*login div*/
-.login-div {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 200px;
-}
-
-.container-fluid {
-  height: 100%;
-}
-
-.login-div .card-div {
-  /*height: 100%;*/
-  flex-direction: column;
-
-  /*min-width: 300px;*/
-}
-
-.login-div mat-card {
-  background: rgba(255, 255, 255, 0.8);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-
-.login-div .card-div mat-form-field {
-  width: 100%;
-}
-
-.login-btn {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: #575ed8;
-  border: 0;
-  border-radius: 3px;
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+body {
   font-family: "Lato", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  outline: none;
-  padding: 10px 9px 10px 11px;
-  text-transform: uppercase;
-  width: 60%;
-}
+  font-weight: 400;
+  line-height: 1.7; }
 
-.login-btn[disabled] {
-  cursor: not-allowed;
-}
+.heading {
+  text-transform: uppercase; }
 
-.login-btn .fa {
-  font-size: 15px;
-  margin-left: auto;
-  position: relative;
-  top: 1px;
-}
+.u-center-text {
+  text-align: center !important; }
 
-.login-btn:hover {
-  -webkit-transform: scale(1.03);
-  transform: scale(1.03);
-}
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
 
-.login-btn[disabled]:hover {
-  -webkit-transform: scale(1.00);
-  transform: scale(1.00);
-}
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important; }
 
-.login-btn:active {
-  -webkit-transform: scale(0.99);
-  transform: scale(0.99);
-}
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important; }
 
-.cdk-global-overlay-wrapper {
-  align-items: flex-start !important;
-}
+.u-margin-top-big {
+  margin-top: 8rem !important; }
 
-.captured {
-  background-color: black;
-  opacity: 0.8;
-  width: 100%;
-  height: 100%;
-}
+.u-margin-top-huge {
+  margin-top: 10rem !important; }
