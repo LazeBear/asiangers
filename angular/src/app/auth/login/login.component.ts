@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from '@angular/material';
 import {AuthService} from '../auth.service';
+import {ToastsManager} from 'ng2-toastr';
+import {debug} from 'util';
 
 @Component({
   selector: 'app-login',
@@ -15,21 +17,18 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  constructor(private authService: AuthService, private snackBar: MatSnackBar) {
+  constructor(private authService: AuthService, private snackBar: MatSnackBar,  public toastr: ToastsManager) {
   }
 
   ngOnInit() {
   }
 
   onLogIn() {
-    this.snackBar.dismiss();
     this.loggingIn = true;
     this.authService.emailLogin(this.model)
       .catch(e => {
         this.loggingIn = false;
-        this.snackBar.open(e, 'X', {
-          duration: 5000,
-        });
+        this.toastr.error(e, 'Oops!');
       });
   }
 }

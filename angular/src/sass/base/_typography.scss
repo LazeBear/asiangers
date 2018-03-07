@@ -1,10 +1,44 @@
 body {
+  font-size: $default-font-size;
   font-family: $font-primary;
   font-weight: 400;
   line-height: 1.7;
+  min-height: 100vh;
+
+  background-image: linear-gradient(rgba($color-black, .85), rgba($color-black, .85)), url("assets/bg.jpg");
+  background-size: cover;
   // color: $color-grey-dark;
 }
 
 .heading {
-  text-transform: uppercase;
+  font-family: $font-heading;
+
+  &--1 {
+    background-image: linear-gradient(to right, $color-primary, $color-primary-dark);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-style: italic;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: .2rem;
+    padding: 0 5rem 2rem 5rem;
+    -webkit-animation: horizontalFlip 20s infinite cubic-bezier(.63,-0.19,.4,1.25);
+    -o-animation: horizontalFlip 20s infinite cubic-bezier(.63,-0.19,.4,1.25);
+    animation: horizontalFlip 20s infinite cubic-bezier(.63,-0.19,.4,1.25);
+    transition: all .2s;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $color-primary-dark;
+  transition: background-color 5000s ease-in-out 0s;
 }

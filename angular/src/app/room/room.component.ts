@@ -24,8 +24,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   constructor(private gameService: GameServiceService,
               private authService: AuthService,
               private wsService: WebsocketService,
-              public toastr: ToastsManager, vcr: ViewContainerRef) {
-    this.toastr.setRootViewContainerRef(vcr);
+              public toastr: ToastsManager) {
   }
 
   ngOnInit() {

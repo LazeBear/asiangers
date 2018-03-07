@@ -1,0 +1,24 @@
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__register {
+    margin-top: 3rem;
+    text-align: right;
+
+    a {
+      text-decoration: none;
+      color: $color-tertiary-dark;
+    }
+  }
+
+  &__btn {
+    width: 70%;
+
+    i {
+      text-align: right;
+    }
+  }
+}

@@ -22,7 +22,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 1em = 16px
 */
 @import url(~@angular/material/prebuilt-themes/indigo-pink.css);
-@import url(~bootstrap/dist/css/bootstrap.min.css);
 @import url(~ng2-toastr/bundles/ng2-toastr.min.css);
 @keyframes moveInLeft {
   0% {
@@ -52,6 +51,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
     opacity: 1;
     transform: translate(0); } }
 
+@keyframes horizontalFlip {
+  0% {
+    transform: skewY(0) skewX(0) scale(1); }
+  25% {
+    transform: skewY(2deg) skewX(15deg) scale(1.1); }
+  50% {
+    transform: skewY(0) skewX(0) scale(1); }
+  75% {
+    transform: skewY(-2deg) skewX(-15deg) scale(1.1); }
+  100% {
+    transform: skewY(0) skewX(0) scale(1); } }
+
 *,
 *::before,
 *::after {
@@ -64,12 +75,42 @@ html {
   box-sizing: border-box; }
 
 body {
+  font-size: 1.6rem;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  line-height: 1.7; }
+  line-height: 1.7;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("assets/bg.jpg");
+  background-size: cover; }
 
 .heading {
-  text-transform: uppercase; }
+  font-family: "Josefin Sans", sans-serif; }
+  .heading--1 {
+    background-image: linear-gradient(to right, #5643fa, #1e06ea);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-style: italic;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: .2rem;
+    padding: 0 5rem 2rem 5rem;
+    -webkit-animation: horizontalFlip 20s infinite cubic-bezier(0.63, -0.19, 0.4, 1.25);
+    -o-animation: horizontalFlip 20s infinite cubic-bezier(0.63, -0.19, 0.4, 1.25);
+    animation: horizontalFlip 20s infinite cubic-bezier(0.63, -0.19, 0.4, 1.25);
+    transition: all .2s; }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1e06ea;
+  transition: background-color 5000s ease-in-out 0s; }
 
 .u-center-text {
   text-align: center !important; }
@@ -88,3 +129,169 @@ body {
 
 .u-margin-top-huge {
   margin-top: 10rem !important; }
+
+.card {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(104, 209, 212, 0.75) 75%);
+  backface-visibility: hidden;
+  border-radius: 5px;
+  padding: 3vw; }
+
+.form__group {
+  margin-bottom: .5rem; }
+
+.form__group {
+  position: relative; }
+
+.form__input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: #fff;
+  padding: 2.5rem 0 1.5rem 2.5rem;
+  border-radius: 2px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  display: block;
+  transition: all .8s; }
+  .form__input-filled, .form__input:focus {
+    outline: none;
+    border-bottom: 2px solid #5643fa; }
+    .form__input-filled::-webkit-input-placeholder, .form__input:focus::-webkit-input-placeholder {
+      color: transparent; }
+  .ng-touched.ng-invalid .form__input:focus:invalid {
+    border-bottom: 2px solid red; }
+  .form__input::-webkit-input-placeholder {
+    color: #fff; }
+
+.form__error {
+  color: red; }
+
+.form__label {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none; }
+  .form__label::after {
+    font-family: FontAwesome;
+    font-size: 2rem;
+    color: #fff;
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    padding-left: .5rem;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s; }
+
+.form__label-user::after {
+  content: '\f007'; }
+
+.form__label-lock::after {
+  content: '\f023'; }
+
+.form__input-filled + .form__label::after,
+.form__input:focus + .form__label::after {
+  transform: translateY(-80%);
+  font-size: 1.6rem;
+  color: #5643fa; }
+
+.form__input-filled + .form__label-lock::after,
+.form__input:focus + .form__label-lock::after {
+  content: '\f09c'; }
+
+.btn, .btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer; }
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active, .btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn--white {
+  background-color: #fff;
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
+
+.btn--primary {
+  background-color: #5643fa;
+  color: #fff; }
+  .btn--primary::after {
+    background-color: #5643fa; }
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #5643fa;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #5643fa;
+  padding: 3px;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #5643fa;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .login__register {
+    margin-top: 3rem;
+    text-align: right; }
+    .login__register a {
+      text-decoration: none;
+      color: #5643fa; }
+  .login__btn {
+    width: 70%; }
+    .login__btn i {
+      text-align: right; }

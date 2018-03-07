@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {GameServiceService} from './services/game-service.service';
+import {ToastsManager} from 'ng2-toastr';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,8 @@ import {GameServiceService} from './services/game-service.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private gameService: GameServiceService) {
-
+  constructor(private gameService: GameServiceService, vcr: ViewContainerRef,  public toastr: ToastsManager) {
+    this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {

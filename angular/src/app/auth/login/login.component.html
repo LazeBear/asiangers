@@ -1,29 +1,36 @@
-<div class="login-div">
-  <mat-card>
-    <div class="card-div">
-      <h3 style="text-align: center">AsiangerS</h3>
-      <mat-form-field>
-        <input matInput placeholder="Enter your email" type="email" email
-               name="email" (keyup.enter)="onLogIn()"
-               [(ngModel)]="model.email" #email="ngModel" required>
-        <mat-error *ngIf="email.invalid && email.touched">Please provide a valid email address</mat-error>
-      </mat-form-field>
-      <mat-form-field hintLabel="Min 6 characters">
-        <input matInput placeholder="Enter your password" name="password"
-               [type]="hide ? 'password' : 'text'" (keyup.enter)="onLogIn()"
-               [(ngModel)]="model.password" #pwd="ngModel" required>
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-        <mat-hint align="end">{{pwd.value?.length || 0}}/6</mat-hint>
-      </mat-form-field>
-      <mat-checkbox disabled>Version 0.0.2</mat-checkbox>
-      <button class="login-btn" (click)="onLogIn()" [disabled]="loggingIn">
-        Login
-        <i *ngIf="!loggingIn" class="fa fa-chevron-right" aria-hidden="true"></i>
-        <i *ngIf="loggingIn" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-      </button>
-      <div class="reg-link">
+<div class="login">
+    <div class="card">
+      <h1 class="heading heading--1">AsiangerS</h1>
+      <form (submit)="onLogIn()" class="form" #form="ngForm">
+        <div class="form__group">
+          <input [class]="email.value === '' ? 'form__input':'form__input form__input-filled'" placeholder="Email" type="email"
+                 name="email" id="email"
+                 [(ngModel)]="model.email" #email="ngModel" required>
+          <span class="form__label form__label-user"></span>
+          <span class="form__error">
+            <span *ngIf="email.invalid && email.touched">Please provide a valid email address</span>
+            <span *ngIf="email.valid || !email.touched">&nbsp;</span>
+          </span>
+        </div>
+        <div class="form__group">
+          <input class="form__input" placeholder="Password" name="password"
+                 id="password" (keyup.enter)="onLogIn()"
+                 [(ngModel)]="model.password" #pwd="ngModel" required minlength="6">
+          <span class="form__label form__label-lock"></span>
+          <span class="form__error">
+            <span *ngIf="pwd.invalid && pwd.touched">Password must be at least 6 characters</span>
+            <span *ngIf="pwd.valid || !pwd.touched">&nbsp;</span>
+          </span>
+        </div>
+        <div class="form__group" style="text-align: center">
+        <button class="btn btn--primary login__btn" type="submit" [disabled]="loggingIn || form.invalid">
+          <span *ngIf="!loggingIn">Login</span>
+          <i *ngIf="loggingIn" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </button>
+        </div>
+      </form>
+      <div class="login__register">
         <a [routerLink]="['/register']">Create a new account?</a>
       </div>
     </div>
-  </mat-card>
 </div>

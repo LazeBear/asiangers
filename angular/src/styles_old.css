@@ -101,13 +101,13 @@ app-game-board {
 }
 
 /*login div*/
-.login-div {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 200px;
-}
+/*.login-div {*/
+  /*height: 100%;*/
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*padding-top: 200px;*/
+/*}*/
 
 .container-fluid {
   height: 100%;
