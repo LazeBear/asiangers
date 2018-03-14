@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MatSnackBar} from '@angular/material';
 import {AuthService} from '../auth.service';
 import {ToastsManager} from 'ng2-toastr';
-import {debug} from 'util';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +15,7 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  constructor(private authService: AuthService, private snackBar: MatSnackBar,  public toastr: ToastsManager) {
+  constructor(private authService: AuthService, public toastr: ToastsManager) {
   }
 
   ngOnInit() {

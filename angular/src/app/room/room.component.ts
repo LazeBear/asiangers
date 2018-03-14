@@ -1,11 +1,10 @@
-import {Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {GameServiceService} from '../services/game-service.service';
 import {AuthService} from '../auth/auth.service';
 import {WebsocketService} from '../services/websocket.service';
 import {Identity} from '../models/identity.model';
 import {ToastsManager} from 'ng2-toastr';
-import {Subscription} from 'rxjs/Subscription';
-import 'rxjs/add/operator/takeWhile';
+
 
 @Component({
   selector: 'app-room',
@@ -17,8 +16,6 @@ export class RoomComponent implements OnInit, OnDestroy {
     player: '',
     uid: ''
   };
-  errorMsgSub: Subscription;
-  infoMsgSub: Subscription;
   private alive: boolean = true;
 
   constructor(private gameService: GameServiceService,
@@ -44,19 +41,17 @@ export class RoomComponent implements OnInit, OnDestroy {
         this.showError(data);
       });
 
-    this.infoMsgSub = this.gameService.infoMsg.subscribe(msg => {
+    this.gameService.infoMsg.takeWhile(() => this.alive).subscribe(msg => {
       this.showInfo(msg);
     });
 
-    this.errorMsgSub = this.gameService.errorMsg.subscribe(msg => {
+    this.gameService.errorMsg.takeWhile(() => this.alive).subscribe(msg => {
       this.showError(msg);
     });
   }
 
   ngOnDestroy() {
     this.wsService.disconnect();
-    this.errorMsgSub.unsubscribe();
-    this.infoMsgSub.unsubscribe();
     this.alive = false;
   }
 

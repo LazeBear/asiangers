@@ -83,6 +83,12 @@
     }
   }
 
+  &__label-name {
+    &::after {
+      content: '\f091';
+    }
+  }
+
   &__input-filled + &__label::after,
   &__input:focus + &__label::after {
     transform: translateY(-80%);

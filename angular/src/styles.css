@@ -199,6 +199,9 @@ select:-webkit-autofill:focus {
 .form__label-lock::after {
   content: '\f023'; }
 
+.form__label-name::after {
+  content: '\f091'; }
+
 .form__input-filled + .form__label::after,
 .form__input:focus + .form__label::after {
   transform: translateY(-80%);
